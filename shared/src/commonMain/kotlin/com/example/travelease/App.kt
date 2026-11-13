@@ -6,7 +6,10 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import androidx.lifecycle.viewmodel.CreationExtras
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -18,6 +21,7 @@ import com.example.travelease.ui.components.ScreenLayout
 import com.example.travelease.ui.screens.*
 import com.example.travelease.ui.theme.TravelEaseTheme
 import com.example.travelease.ui.theme.TravelMuted
+import kotlin.reflect.KClass
 
 private object Routes {
     const val HOME = "home"
@@ -31,10 +35,23 @@ private object Routes {
     const val PLACEHOLDER = "placeholder"
 }
 
+private object TravelViewModelFactory : ViewModelProvider.Factory {
+    override fun <T : ViewModel> create(
+        modelClass: KClass<T>,
+        extras: CreationExtras,
+    ): T {
+        require(modelClass == TravelViewModel::class) {
+            "TravelViewModelFactory can only create TravelViewModel."
+        }
+        @Suppress("UNCHECKED_CAST")
+        return TravelViewModel() as T
+    }
+}
+
 @Composable
 fun App() {
     TravelEaseTheme {
-        val model: TravelViewModel = viewModel()
+        val model: TravelViewModel = viewModel(factory = TravelViewModelFactory)
         val state by model.state.collectAsStateWithLifecycle()
         val nav = rememberNavController()
         val pronunciation: PronunciationPlayer = remember { UnavailablePronunciationPlayer() }

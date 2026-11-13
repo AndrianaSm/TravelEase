@@ -2,86 +2,113 @@
 
 **An Adaptive Public Transportation Assistance Prototype**
 
-TravelEase is a Kotlin Multiplatform mobile application prototype developed as part of a university Fuzzy Systems course.
-
-The project explores how fuzzy logic can be used to provide personalized assistance to people navigating public transportation in unfamiliar environments.
+TravelEase is a Kotlin Multiplatform mobile application prototype developed for a university Fuzzy Systems course. It explores how fuzzy logic can adapt the amount of guidance provided to users navigating public transportation in unfamiliar environments.
 
 ## 🎯 Project Concept
 
-The goal is to help users overcome language barriers and understand public transportation through simple, adaptive and accessible guidance.
+TravelEase aims to make public transportation easier to navigate by combining:
+- Adaptive assistance based on the user's perceived difficulty and time pressure.
+- German phrases with English translations.
+- Guidance for purchasing train tickets.
+- Information about public transportation symbols.
 
-The application aims to provide:
-- Translation assistance.
-- Public transportation symbol explanations.
-- Step-by-step travel guidance.
-- Personalized assistance based on user needs.
+The current adaptive journey focuses on one main scenario: **buying a train ticket**. Additional transportation scenarios are planned for future development.
 
-## 🧠 Fuzzy Logic
+## 🧠 Adaptive Assistance with Fuzzy Logic
 
-The prototype integrates a fuzzy inference system that determines the appropriate level of assistance based on two inputs:
+The assistance level is determined by two user inputs, each rated from **0 to 10**:
 
-- **Difficulty:** How difficult the situation is for the user (0–10).
-- **Time Pressure:** How much urgency the user experiences (0–10).
+- **Difficulty:** How difficult the situation feels to the user.
+- **Time Pressure:** How urgent the situation feels to the user.
 
-The system calculates an assistance score using a precomputed lookup table and bilinear interpolation.
+The fuzzy system uses a precomputed lookup table and bilinear interpolation to calculate an assistance score.
 
-Three assistance levels are defined:
+Three assistance levels are available:
 
-| Level | Score | Guidance |
+| Assistance Level | Score | User Experience |
 |---|---|---|
-| Low | Below 0.35 | Simple hints |
-| Moderate | 0.35–0.65 | Step-by-step checklist |
-| High | Above 0.65 | Detailed walkthrough |
+| **Low** | Below 0.35 | Minimal help: an essential German phrase, English translation, written pronunciation guidance, and a short tip. |
+| **Moderate** | 0.35–0.65 | Guided overview: ticket information and a numbered checklist explaining what the user needs to do. |
+| **High** | Above 0.65 | Interactive guidance: a detailed four-step walkthrough with explanations, useful German phrases, a progress indicator, and Previous/Next navigation. |
+
+Each level provides a different amount of support:
+
+- **Low:** Gives the user a little help to get started.
+- **Moderate:** Explains what the user needs to do.
+- **High:** Guides the user through the process one step at a time.
 
 ## 📱 Current Prototype
 
-The currently implemented user journey focuses on purchasing a train ticket:
+The main adaptive user journey focuses on purchasing a train ticket:
 
 1. Select public transportation.
-2. Choose "Buy a train ticket".
+2. Choose **Buy a train ticket**.
 3. Complete the adaptive assistance questionnaire.
-4. Receive low, moderate or high assistance.
-5. Access a translated German phrase for purchasing a ticket.
+4. Receive a Low, Moderate, or High assistance experience.
+5. Follow the guidance for purchasing a train ticket.
+6. View useful German phrases and their English translations.
 
-Additional scenarios and features are part of the planned development.
+### Assistance Experiences
+
+**Low Assistance — "You can do this!"**
+
+Provides minimal support with a useful German phrase, its English translation, written pronunciation guidance, and a short practical tip.
+
+**Moderate Assistance — "Let's do it together!"**
+
+Provides a structured overview of the ticket-purchasing process, including the destination, ticket selection, numbered instructions, and useful German phrases.
+
+**High Assistance — "We'll guide you through every step."**
+
+Provides a more interactive experience by dividing the process into four individual steps:
+
+1. Find a ticket machine.
+2. Choose the destination.
+3. Choose the ticket type.
+4. Pay and collect the ticket.
+
+Users can navigate between steps, follow the progress indicator, and receive explanations and relevant German phrases along the way.
 
 ## 🛠️ Technology Stack
 
 - Kotlin Multiplatform (KMP)
 - Compose Multiplatform
 - Material 3
-- Kotlin Coroutines & StateFlow
+- Kotlin Coroutines and StateFlow
 - Fuzzy Logic
 
 ## 🚀 Getting Started
 
 Clone the repository:
 
-```bash
+\`\`\`bash
 git clone https://github.com/AndrianaSm/TravelEase.git
 cd TravelEase
-```
+\`\`\`
 
 Build the Android application:
 
-```bash
+\`\`\`bash
 ./gradlew :androidApp:assembleDebug
-```
+\`\`\`
 
 Run shared tests:
 
-```bash
+\`\`\`bash
 ./gradlew :shared:allTests
-```
+\`\`\`
 
-For iOS, open `iosApp/TravelEase.xcodeproj` in Xcode.
+For iOS development, open the iOS project in Xcode.
 
 ## 📌 Project Status
 
-<badge>Prototype — Work in Progress</badge>
+**University course prototype**
 
-The train-ticket assistance flow is currently implemented. Other transportation scenarios, translations and additional features are planned for future development.
+The train-ticket purchasing scenario and its three adaptive assistance experiences are implemented in the current prototype. Additional transportation scenarios and features can be explored in future development.
 
-**Repository:** [TravelEase](https://github.com/AndrianaSm/TravelEase)
+Audio pronunciation is not implemented. German phrases are presented as text with English translations and written pronunciation guidance where available.
 
-**Fuzzy Logic Reference:** [ioctl/travelease](https://github.com/ioctl/travelease)
+## 🔗 References
+
+- **Mobile Application:** [AndrianaSm/TravelEase](https://github.com/AndrianaSm/TravelEase)
+- **Fuzzy Logic Reference:** [ioctl/travelease](https://github.com/ioctl/travelease)
