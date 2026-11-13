@@ -7,6 +7,7 @@ TravelEase is a Kotlin Multiplatform mobile application prototype developed for 
 ## 🎯 Project Concept
 
 TravelEase aims to make public transportation easier to navigate by combining:
+
 - Adaptive assistance based on the user's perceived difficulty and time pressure.
 - German phrases with English translations.
 - Guidance for purchasing train tickets.
@@ -68,6 +69,43 @@ Provides a more interactive experience by dividing the process into four individ
 4. Pay and collect the ticket.
 
 Users can navigate between steps, follow the progress indicator, and receive explanations and relevant German phrases along the way.
+
+## 🖼️ App Screenshots
+
+The following screenshots illustrate the main application flow and the three adaptive assistance experiences.
+
+<table>
+  <tr>
+    <td align="center">
+      <strong>01. Home Screen</strong><br/>
+      <img width="260" src="https://github.com/user-attachments/assets/9c4fe001-4a08-4fe8-91a9-b83ba68a6586" alt="TravelEase home screen"/>
+    </td>
+    <td align="center">
+      <strong>02. Task Selection</strong><br/>
+      <img width="260" src="https://github.com/user-attachments/assets/f54ca3d5-8e3a-4044-804b-873aa41ea3aa" alt="TravelEase task selection"/>
+    </td>
+  </tr>
+  <tr>
+    <td align="center">
+      <strong>03. Adaptive Assessment</strong><br/>
+      <img width="260" src="https://github.com/user-attachments/assets/9133aa38-dba2-4123-ac32-93ea815de13d" alt="TravelEase adaptive assistance assessment"/>
+    </td>
+    <td align="center">
+      <strong>04. Low Assistance</strong><br/>
+      <img width="260" src="https://github.com/user-attachments/assets/9562cea3-a27d-4261-9a6e-cfeb87c1bae6" alt="TravelEase low assistance screen"/>
+    </td>
+  </tr>
+  <tr>
+    <td align="center">
+      <strong>05. Moderate Assistance</strong><br/>
+      <img width="260" src="https://github.com/user-attachments/assets/bd4c7246-7273-4391-b480-e2859e26bbef" alt="TravelEase moderate assistance screen"/>
+    </td>
+    <td align="center">
+      <strong>06. High Assistance</strong><br/>
+      <img width="260" src="https://github.com/user-attachments/assets/efc98094-0a83-4300-b129-3b3230873309" alt="TravelEase high assistance screen"/>
+    </td>
+  </tr>
+</table>
 
 ## 🛠️ Technology Stack
 
