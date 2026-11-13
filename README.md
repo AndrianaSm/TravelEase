@@ -1,48 +1,87 @@
-TravelEase is a Kotlin Multiplatform project targeting Android and iOS.
+# TravelEase 🚆
 
-The Android application ID and iOS bundle ID are `com.example.travelease`.
-They differ from the original starter identifiers, so existing installations
-are treated as separate apps and their data is not automatically transferred.
+**An Adaptive Public Transportation Assistance Prototype**
 
-The shared Compose UI implements TravelEase's public-transport task flow. Choose
-**Public transport**, then **Buy a train ticket** to answer the assistance
-questionnaire and see low, moderate, or high guidance. Each guidance screen
-links to the translation; **Understand a transport symbol** opens the
-swipeable symbol guide. Other categories and tasks currently show a coming-soon
-message. Questionnaire answers and the chosen ticket type are retained while
-navigating within the app.
+TravelEase is a Kotlin Multiplatform mobile application prototype developed as part of a university Fuzzy Systems course.
 
-The German and English ticket phrase is sample data. Pronunciation is exposed
-through `PronunciationPlayer`, but platform text-to-speech is not yet wired up:
-the audio button explains that playback is unavailable. The enlarged phrase
-view can be used instead.
+The project explores how fuzzy logic can be used to provide personalized assistance to people navigating public transportation in unfamiliar environments.
 
-* [/iosApp](./iosApp/iosApp) contains an iOS application. Even if you’re sharing your UI with Compose Multiplatform,
-  you need this entry point for your iOS app. This is also where you should add SwiftUI code for your project.
+## 🎯 Project Concept
 
-* [/shared](./shared/src) is for code that will be shared across your Compose Multiplatform applications.
-  It contains several subfolders:
-  - [commonMain](./shared/src/commonMain/kotlin) is for code that’s common for all targets.
-  - Other folders are for Kotlin code that will be compiled for only the platform indicated in the folder name.
-    For example, if you want to use Apple’s CoreCrypto for the iOS part of your Kotlin app,
-    the [iosMain](./shared/src/iosMain/kotlin) folder would be the right place for such calls.
-    Similarly, if you want to edit the Desktop (JVM) specific part, the [jvmMain](./shared/src/jvmMain/kotlin)
-    folder is the appropriate location.
+The goal is to help users overcome language barriers and understand public transportation through simple, adaptive and accessible guidance.
 
-### Running the apps
+The application aims to provide:
+- Translation assistance.
+- Public transportation symbol explanations.
+- Step-by-step travel guidance.
+- Personalized assistance based on user needs.
 
-Use the run configurations provided by the run widget in your IDE's toolbar. You can also use these commands and options:
+## 🧠 Fuzzy Logic
 
-- Android app: `./gradlew :androidApp:assembleDebug`
-- iOS app: open [TravelEase.xcodeproj](./iosApp/TravelEase.xcodeproj) in Xcode and run it from there.
+The prototype integrates a fuzzy inference system that determines the appropriate level of assistance based on two inputs:
 
-### Running tests
+- **Difficulty:** How difficult the situation is for the user (0–10).
+- **Time Pressure:** How much urgency the user experiences (0–10).
 
-Use the run button in your IDE's editor gutter, or run tests using Gradle tasks:
+The system calculates an assistance score using a precomputed lookup table and bilinear interpolation.
 
-- Android tests: `./gradlew :shared:testAndroidHostTest`
-- iOS tests: `./gradlew :shared:iosSimulatorArm64Test`
+Three assistance levels are defined:
 
----
+| Level | Score | Guidance |
+|---|---|---|
+| Low | Below 0.35 | Simple hints |
+| Moderate | 0.35–0.65 | Step-by-step checklist |
+| High | Above 0.65 | Detailed walkthrough |
 
-Learn more about [Kotlin Multiplatform](https://www.jetbrains.com/help/kotlin-multiplatform-dev/get-started.html)…
+## 📱 Current Prototype
+
+The currently implemented user journey focuses on purchasing a train ticket:
+
+1. Select public transportation.
+2. Choose "Buy a train ticket".
+3. Complete the adaptive assistance questionnaire.
+4. Receive low, moderate or high assistance.
+5. Access a translated German phrase for purchasing a ticket.
+
+Additional scenarios and features are part of the planned development.
+
+## 🛠️ Technology Stack
+
+- Kotlin Multiplatform (KMP)
+- Compose Multiplatform
+- Material 3
+- Kotlin Coroutines & StateFlow
+- Fuzzy Logic
+
+## 🚀 Getting Started
+
+Clone the repository:
+
+```bash
+git clone https://github.com/AndrianaSm/TravelEase.git
+cd TravelEase
+```
+
+Build the Android application:
+
+```bash
+./gradlew :androidApp:assembleDebug
+```
+
+Run shared tests:
+
+```bash
+./gradlew :shared:allTests
+```
+
+For iOS, open `iosApp/TravelEase.xcodeproj` in Xcode.
+
+## 📌 Project Status
+
+<badge>Prototype — Work in Progress</badge>
+
+The train-ticket assistance flow is currently implemented. Other transportation scenarios, translations and additional features are planned for future development.
+
+**Repository:** [TravelEase](https://github.com/AndrianaSm/TravelEase)
+
+**Fuzzy Logic Reference:** [ioctl/travelease](https://github.com/ioctl/travelease)

@@ -17,8 +17,6 @@ enum class TravelTask(val title: String, val description: String) {
     JOURNEY("Follow my journey", "See where to stop, the next stop, and when to get off."),
 }
 
-enum class Difficulty { EASY, MODERATE, DIFFICULT }
-enum class Confidence { NOT_CONFIDENT, SOMEWHAT_CONFIDENT, VERY_CONFIDENT }
 enum class AssistanceLevel { LOW, MODERATE, HIGH }
 enum class TicketType(val label: String) { ONE_WAY("One-way"), RETURN("Return") }
 
@@ -41,11 +39,3 @@ val sampleTranslation = Translation(
     pronunciation = "ich MERKH-tuh ine TIK-et nah BEHRN, BIT-tuh",
     category = "Train",
 )
-
-fun calculateAssistanceLevel(difficulty: Difficulty, confidence: Confidence): AssistanceLevel =
-    when {
-        difficulty == Difficulty.DIFFICULT -> AssistanceLevel.HIGH
-        difficulty == Difficulty.MODERATE && confidence == Confidence.NOT_CONFIDENT -> AssistanceLevel.HIGH
-        difficulty == Difficulty.EASY && confidence != Confidence.NOT_CONFIDENT -> AssistanceLevel.LOW
-        else -> AssistanceLevel.MODERATE
-    }

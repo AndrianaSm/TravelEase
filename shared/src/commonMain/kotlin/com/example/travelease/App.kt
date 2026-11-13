@@ -70,8 +70,8 @@ fun App() {
                 }
             }
             composable(Routes.ASSESSMENT) {
-                AdaptiveAssistanceScreen(state, back, model::selectDifficulty, model::selectConfidence) {
-                    val destination = when (model.calculateLevel()) {
+                AdaptiveAssistanceScreen(state, back, model::updateDifficulty, model::updateTimePressure) {
+                    val destination = when (model.calculateAssistance()) {
                         AssistanceLevel.LOW -> Routes.LOW
                         AssistanceLevel.MODERATE -> Routes.MODERATE
                         AssistanceLevel.HIGH -> Routes.HIGH
