@@ -87,7 +87,20 @@ fun App() {
                 ModerateAssistanceScreen(state, translation, back, model::selectTicketType, hear, openTranslation)
             }
             composable(Routes.HIGH) {
-                HighAssistanceScreen(state, translation, back, model::selectTicketType, hear, openTranslation)
+                HighAssistanceScreen(
+                    state,
+                    translation,
+                    back,
+                    model::selectTicketType,
+                    hear,
+                    openTranslation,
+                    onFinish = {
+                        nav.navigate(Routes.HOME) {
+                            popUpTo(Routes.HOME) { inclusive = false }
+                            launchSingleTop = true
+                        }
+                    },
+                )
             }
             composable(Routes.TRANSLATION) {
                 TranslationScreen(translation, back, hear, show) {

@@ -180,11 +180,15 @@ fun TransportCategoryChip(category: String) {
 }
 
 @Composable
-fun DestinationCard(selected: TicketType, onSelect: (TicketType) -> Unit) {
+fun DestinationCard(
+    selected: TicketType,
+    onSelect: (TicketType) -> Unit,
+    accentColor: Color = TravelBlue,
+) {
     Surface(shape = RoundedCornerShape(14.dp), color = TravelSurface, modifier = Modifier.fillMaxWidth()) {
         Column(Modifier.padding(16.dp), verticalArrangement = Arrangement.spacedBy(10.dp)) {
             Row(verticalAlignment = Alignment.CenterVertically) {
-                Icon(Icons.Default.LocationOn, null, tint = TravelBlue)
+                Icon(Icons.Default.LocationOn, null, tint = accentColor)
                 Spacer(Modifier.width(8.dp))
                 Text("Destination: Bern", fontWeight = FontWeight.Bold)
             }
@@ -199,12 +203,18 @@ fun DestinationCard(selected: TicketType, onSelect: (TicketType) -> Unit) {
 }
 
 @Composable
-fun InstructionStep(number: Int, title: String, description: String, icon: ImageVector) {
+fun InstructionStep(
+    number: Int,
+    title: String,
+    description: String,
+    icon: ImageVector,
+    accentColor: Color = TravelBlue,
+) {
     Surface(shape = RoundedCornerShape(14.dp), color = TravelSurface, modifier = Modifier.fillMaxWidth()) {
         Row(Modifier.padding(14.dp), verticalAlignment = Alignment.Top) {
-            Surface(shape = RoundedCornerShape(50), color = TravelBlueLight) {
+            Surface(shape = RoundedCornerShape(50), color = accentColor.copy(alpha = 0.12f)) {
                 Box(Modifier.size(32.dp), contentAlignment = Alignment.Center) {
-                    Text("$number", color = TravelBlue, fontWeight = FontWeight.Bold)
+                    Text("$number", color = accentColor, fontWeight = FontWeight.Bold)
                 }
             }
             Spacer(Modifier.width(12.dp))
@@ -212,7 +222,7 @@ fun InstructionStep(number: Int, title: String, description: String, icon: Image
                 Text(title, fontWeight = FontWeight.Bold, style = MaterialTheme.typography.titleSmall)
                 Text(description, style = MaterialTheme.typography.bodySmall, color = TravelMuted)
             }
-            Icon(icon, null, tint = TravelBlue, modifier = Modifier.size(22.dp))
+            Icon(icon, null, tint = accentColor, modifier = Modifier.size(22.dp))
         }
     }
 }
